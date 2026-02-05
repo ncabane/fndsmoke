@@ -1,12 +1,18 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+const FUNDA_USER_AGENT = process.env.FUNDA_USER_AGENT;
+
+if (!FUNDA_USER_AGENT) {
+  throw new Error('FUNDA_USER_AGENT env var is not set. See README for setup.');
+}
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -30,6 +36,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    userAgent: FUNDA_USER_AGENT,
   },
 
   /* Configure projects for major browsers */
