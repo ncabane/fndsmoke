@@ -32,14 +32,17 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    userAgent: FUNDA_USER_AGENT,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      // Use Desktop Chrome device settings but override the user agent
+      use: { 
+        ...devices['Desktop Chrome'],
+        userAgent: FUNDA_USER_AGENT,
+      },
     },
   ],
 
