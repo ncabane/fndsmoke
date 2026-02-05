@@ -1,5 +1,7 @@
 export const urls = {
   home: 'https://www.funda.nl/',
-  // Add more URLs here as the test suite grows.
+  api: {
+    search: 'https://search-topposition.funda.io/v2.0/search',
+  },
 };
 
