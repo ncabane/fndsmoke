@@ -3,18 +3,17 @@ import { urls } from '../config/urls';
 
 //#region Page Objects
 export class HomePage {
-  fundaLogo: Locator;
-  searchBar: Locator;
-  searchButton: Locator;
-  searchOnMapLink: Locator;
-  fundaHeaderImage: Locator;
+  homepageSearchBar: Locator;
+  homepageSearchButton: Locator;
+  homepageSearchOnMapLink: Locator;
+  homepageFundaHeaderImage: Locator;
+  
   constructor(private readonly page: Page)
    {
-    this.fundaLogo = this.page.getByAltText('Funda Logo');
-    this.searchBar = this.page.getByTestId('search-box')
-    this.searchButton = this.page.getByLabel('SearchBox submit button');
-    this.searchOnMapLink = this.page.getByLabel('Zoek op kaart');
-    this.fundaHeaderImage = this.page.locator('img[src*="funda_header.svg"]');
+    this.homepageSearchBar = this.page.getByTestId('search-box')
+    this.homepageSearchButton = this.page.getByLabel('SearchBox submit button');
+    this.homepageSearchOnMapLink = this.page.getByLabel('Zoek op kaart');
+    this.homepageFundaHeaderImage = this.page.locator('img[src*="funda_header.svg"]');
   }
 //#endregion
 
@@ -27,18 +26,8 @@ export class HomePage {
     await expect(this.page).toHaveTitle(/Funda/i);
   }
 
-  async homepageHasFundaLogo() {
-    const visible = await this.fundaLogo.isVisible();
-    if (visible) {
-      console.log('Funda logo is visible');
-    } else {
-      console.log('Funda logo is not visible');
-    }
-    expect(visible).toBe(true);
-  }
-
   async homepageHasFundaHeaderImage() {
-    const visible = await this.fundaHeaderImage.isVisible();
+    const visible = await this.homepageFundaHeaderImage.isVisible();
     if (visible) {
       console.log('Funda header image is visible');
     } else {
@@ -48,7 +37,7 @@ export class HomePage {
   }
 
   async homepageHasSearchBar() {
-    const visible = await this.searchBar.isVisible();
+    const visible = await this.homepageSearchBar.isVisible();
     if (visible) {
       console.log('Search bar is visible');
     } else {
@@ -58,7 +47,7 @@ export class HomePage {
   }
 
   async homepageHasSearchButton() {
-    const visible = await this.searchButton.isVisible();
+    const visible = await this.homepageSearchButton.isVisible();
     if (visible) {
       console.log('Search button is visible');
     } else {
@@ -67,8 +56,15 @@ export class HomePage {
     expect(visible).toBe(true);
   }
 
+  async homepageSearchCityDiemen(){
+    await this.homepageSearchBar.isVisible();
+    await this.homepageSearchBar.fill('Diemen');
+    await this.homepageSearchButton.isVisible();
+    await this.homepageSearchButton.click();
+  }
+
   async homepageHasSearchOnMapLink() {
-    const visible = await this.searchOnMapLink.isVisible();
+    const visible = await this.homepageSearchOnMapLink.isVisible();
     if (visible) {
       console.log('Search on map link is visible');
     } else {

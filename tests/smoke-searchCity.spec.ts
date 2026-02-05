@@ -3,7 +3,7 @@ import { CommonPage } from './pages/commonPage';
 import { HomePage } from './pages/HomePage';
 import { CookiesPage } from './pages/CookiesPage';
 
-test('Homepage Smoke Test', async ({ page }) => {
+test('Search City Smoke Test', async ({ page }) => {
   const common = new CommonPage(page);
   const home = new HomePage(page);
   const cookies = new CookiesPage(page);
@@ -17,14 +17,7 @@ test('Homepage Smoke Test', async ({ page }) => {
   if (await cookies.isRobotCheckVisible()) {
     return;
   }
-  await home.homepageTitleIsCorrect();
-  await common.fundaLogoIsPresent();
-  await common.mainNavigationHeaderIsPresent();
-  await home.homepageHasFundaHeaderImage();
-  await home.homepageHasSearchBar();
-  await home.homepageHasSearchButton();
-  await home.homepageHasSearchOnMapLink();
-  await common.contentInfoFooterIsPresent();
-  await common.mainFooterIsPresent();
+  // Searches for Diemen in the search bar and clicks the search button
+  await home.homepageSearchCityDiemen();
   //#endregion
 });
