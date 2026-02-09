@@ -1,9 +1,9 @@
 import { test } from '@playwright/test';
 import { CommonPage } from './pages/commonPage';
-import { HomePage } from './pages/HomePage';
+import { HomePage } from './pages/HomePage';  
 import { CookiesPage } from './pages/cookiesPage';
 
-test('Search City Smoke Test', async ({ page }) => {
+test('See Property Page Smoke Test', async ({ page }) => {
   const common = new CommonPage(page);
   const home = new HomePage(page);
   const cookies = new CookiesPage(page);
