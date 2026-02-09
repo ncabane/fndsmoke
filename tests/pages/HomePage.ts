@@ -56,13 +56,6 @@ export class HomePage {
     expect(visible).toBe(true);
   }
 
-  async homepageSearchCityDiemen(){
-    await this.homepageSearchBar.isVisible();
-    await this.homepageSearchBar.fill('Diemen');
-    await this.homepageSearchButton.isVisible();
-    await this.homepageSearchButton.click();
-  }
-
   async homepageHasSearchOnMapLink() {
     const visible = await this.homepageSearchOnMapLink.isVisible();
     if (visible) {
@@ -71,6 +64,16 @@ export class HomePage {
       console.log('Search on map link is not visible');
     }
     expect(visible).toBe(true);
+  }
+  async homepageSearchClickSearchButton(){
+  const visible =  await this.homepageSearchButton.isVisible();
+    if (visible) {
+      console.log('Search button is visible and clicked on it');
+    } else {
+      console.log('Search button is not visible, test continues');
+    }
+    expect(visible).toBe(true);
+    await this.homepageSearchButton.click();
   }
   //#endregion
 }
