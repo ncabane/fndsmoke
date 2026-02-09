@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { CommonPage } from './pages/commonPage';
 import { HomePage } from './pages/HomePage';
-import { CookiesPage } from './pages/CookiesPage';
+import { CookiesPage } from './pages/cookiesPage';
 
 test('Homepage Smoke Test', async ({ page }) => {
   const common = new CommonPage(page);
