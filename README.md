@@ -71,7 +71,7 @@ yarn playwright show-report
 
 ### Test framework
 
-I use **Playwright with TypeScript** — the language I'm most familiar with and the framework I prefer for browser automation.
+I use **Playwright with TypeScript** — its stability, speed, strong TypeScript support, and first-class API testing, which fits well with scalable smoke testing..
 
 ### Code editor
 
@@ -84,6 +84,9 @@ I use **Cursor** as my editor. It has proven to me that I can deliver better, fa
 For these smoke tests I imagined myself on the team asking: *what is the minimum the website must offer, and if this minimum fails, is deploying worth it?*
 
 Because this is an assignment, I kept the code **simple but scalable** — easy to recycle, reuse, and expand when needed.
+
+### What I intentionally did not include
+I avoided long, end-to-end scenarios (e.g. full contact flows, multi-step user journeys) to keep smoke tests fast, reliable, and independent. These flows are better suited for regression or exploratory testing.
 
 ---
 
@@ -148,7 +151,7 @@ I **removed the Playwright GitHub Actions workflow** (`playwright.yml`) to avoid
 ## Playwright config notes
 
 - **Retries: 0** — So we fail fast and don’t wait for timeouts on retries.
-- **Chromium only** — For this assignment I kept a single browser to keep runs fast.
+- **Chromium only** — For smoke tests, I focused on a single browser to keep execution fast and reduce noise. Cross-browser coverage would be part of a broader regression suite.
 - **Trace: retain-on-failure** — So failed runs still produce a trace for debugging.
 
 For API tests in production I would typically use **Postman + Newman** for CI/CD, but for this assignment I kept everything in **Playwright** so the repo stays simple and everything runs with one tool.
