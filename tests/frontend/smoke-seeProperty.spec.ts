@@ -9,8 +9,9 @@ test('See Property Page Smoke Test', async ({ page }) => {
   const common = new CommonPage(page);
   const home = new HomePage(page);
   const cookies = new CookiesPage(page);
-  const resultsPage = new ResultsPage(page);
-  const propertyPage = new PropertyPage(page);
+  const results = new ResultsPage(page);
+  const property = new PropertyPage(page);
+ 
   //#region actual tests
   await home.goto();
   await common.verifyUserAgent();
@@ -20,17 +21,23 @@ test('See Property Page Smoke Test', async ({ page }) => {
   if (await cookies.isRobotCheckVisible()) {
     return;
   }
-  // Clickes the search button
+  // Clicks the search button
   await home.homepageSearchClickSearchButton();
 
   // Expects the results page header to be correct
-  await resultsPage.resultsPageHeaderIsCorrect();
+  await results.resultsPageHeaderIsCorrect();
+ 
   // Clicks the first property link on the results page
-  await resultsPage.resultsPageClickFirstPropertyLink();
+  await results.resultsPageClickFirstPropertyLink();
+ 
   // Expects the property breadcrumb to be correct
-  await propertyPage.propertyBreadCrumbIsCorrect();
+  await common.breadCrumbsAreVisible();
+ 
   // Expects the property photos container to be visible
-  await propertyPage.propertyPhotosIsVisible();  
-  await propertyPage.propertyAboutIsVisible();  
+  await property.propertyPhotosIsVisible();  
+
+  // Expects the property about section to be visible
+  await property.propertyAboutIsVisible();  
+ 
   //#endregion
 });

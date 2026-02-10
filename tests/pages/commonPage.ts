@@ -1,15 +1,19 @@
 import { Page, expect, Locator} from '@playwright/test';
 
+// [Nicolas] Page structure, locators, test flow.
+// [AI-assisted] Visibility methods refactored to expect().toBeVisible({ timeout }) + scrollIntoViewIfNeeded() for stability; console.log kept for assignment.
+
 //#region Page Objects
 export class CommonPage {
   fundaLogo: Locator;
-  mainNavigationHeader: Locator
-  contentInfoFooter: Locator
-  mainFooter: Locator
+  mainNavigationHeader: Locator;
+  contentInfoFooter: Locator;
+  mainFooter: Locator;
   mainFooterVerkoopJeHuisLink: Locator;
   mainFooterMeldJeAanLink: Locator;
   mainFooterInloggenLink: Locator;
   mainFooterOverFundaLink: Locator;
+  breadCrumbs: Locator;
 
   
   constructor(private readonly page: Page)
@@ -22,31 +26,25 @@ export class CommonPage {
     this.mainFooterMeldJeAanLink = this.page.getByLabel('Meld je aan bij Funda');
     this.mainFooterInloggenLink = this.page.getByLabel('Inloggen Mijn Huis');
     this.mainFooterOverFundaLink = this.page.getByLabel('Over Funda');
+    this.breadCrumbs = this.page.getByLabel('Breadcrumb');
   }
 //#endregion
 
 //#region Actions
 
+  // Expects the Funda logo to be present
   async fundaLogoIsPresent() {
-    const visible = await this.fundaLogo.isVisible();
-    if (await this.fundaLogo.isVisible()) {
-      console.log('Funda logo is visible');
-    } else {
-      console.log('Funda logo is not visible');
-    }
-    expect(visible).toBe(true);
+    await expect(this.fundaLogo).toBeVisible({ timeout: 10000 });
+    console.log('Funda logo is visible');
   }
 
+  // Expects the main navigation header to be present
   async mainNavigationHeaderIsPresent() {
-    const visible = await this.mainNavigationHeader.isVisible();
-    if (await this.mainNavigationHeader.isVisible()) {
-      console.log('Main navigation header is visible');
-    } else {
-      console.log('Main navigation header is not visible');
-    }
-    expect(visible).toBe(true);
+    await expect(this.mainNavigationHeader).toBeVisible({ timeout: 10000 });
+    console.log('Main navigation header is visible');
   }
 
+  // Verifies the browser is using the Funda interview user agent
   async verifyUserAgent() {
     // Verify the browser is actually using the special Funda interview user agent
     const ua = await this.page.evaluate(() => navigator.userAgent);
@@ -59,59 +57,53 @@ export class CommonPage {
       console.log('UA in browser:', ua);
     }
   }
+
+  // Expects the content info footer to be present
   async contentInfoFooterIsPresent() {
-    const visible = await this.contentInfoFooter.isVisible();
-    if (await this.contentInfoFooter.isVisible()) {
-      console.log('Content info footer is visible');
-    } else {
-      console.log('Content info footer is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.contentInfoFooter.scrollIntoViewIfNeeded();
+    await expect(this.contentInfoFooter).toBeVisible({ timeout: 10000 });
+    console.log('Content info footer is visible');
   }
+
+  // Expects the main footer to be present
   async mainFooterIsPresent() {
-    const visible = await this.mainFooter.isVisible();
-    if (await this.mainFooter.isVisible()) {
-      console.log('Main footer is visible');
-    } else {
-      console.log('Main footer is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.mainFooter.scrollIntoViewIfNeeded();
+    await expect(this.mainFooter).toBeVisible({ timeout: 10000 });
+    console.log('Main footer is visible');
   }
+
+  // Expects the Verkoop je huis link to be present
   async mainFooterVerkoopJeHuisLinkPresent() {
-    const visible = await this.mainFooterVerkoopJeHuisLink.isVisible();
-    if (await this.mainFooterVerkoopJeHuisLink.isVisible()) {
-      console.log('Verkoop je huis link is visible');
-    } else {
-      console.log('Verkoop je huis link is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.mainFooterVerkoopJeHuisLink.scrollIntoViewIfNeeded();
+    await expect(this.mainFooterVerkoopJeHuisLink).toBeVisible({ timeout: 10000 });
+    console.log('Verkoop je huis link is visible');
   }
+
+  // Expects the Meld je aan link to be present
   async mainFooterMeldJeAanLinkIsPresent() {
-    const visible = await this.mainFooterMeldJeAanLink.isVisible();
-    if (await this.mainFooterMeldJeAanLink.isVisible()) {
-      console.log('Meld je aan link is visible');
-    } else {
-      console.log('Meld je aan link is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.mainFooterMeldJeAanLink.scrollIntoViewIfNeeded();
+    await expect(this.mainFooterMeldJeAanLink).toBeVisible({ timeout: 10000 });
+    console.log('Meld je aan link is visible');
   }
+
+  // Expects the Inloggen link to be present
   async mainFooterInloggenLinkIsPresent() {
-    const visible = await this.mainFooterInloggenLink.isVisible();
-    if (await this.mainFooterInloggenLink.isVisible()) {
-      console.log('Inloggen link is visible');
-    } else {
-      console.log('Inloggen link is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.mainFooterInloggenLink.scrollIntoViewIfNeeded();
+    await expect(this.mainFooterInloggenLink).toBeVisible({ timeout: 10000 });
+    console.log('Inloggen link is visible');
   }
+
+  // Expects the Over Funda link to be present
   async mainFooterOverFundaLinkIsPresent() {
-    const visible = await this.mainFooterOverFundaLink.isVisible();
-    if (await this.mainFooterOverFundaLink.isVisible()) {
-      console.log('Over Funda link is visible');
-    } else {
-      console.log('Over Funda link is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.mainFooterOverFundaLink.scrollIntoViewIfNeeded();
+    await expect(this.mainFooterOverFundaLink).toBeVisible({ timeout: 10000 });
+    console.log('Over Funda link is visible');
+  }
+
+  // Expects the breadcrumbs to be visible
+  async breadCrumbsAreVisible() {
+    await expect(this.breadCrumbs).toBeVisible({ timeout: 10000 });
+    console.log('Breadcrumbs are visible');
   }
   //#endregion
 }
