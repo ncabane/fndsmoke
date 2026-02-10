@@ -7,6 +7,20 @@ You are free to use any of the code on your current projects, should you find it
 
 ---
 
+## Table of contents
+
+- [Quick start](#quick-start)
+- [Tooling](#tooling)
+- [Test approach](#test-approach)
+- [Test list](#test-list)
+- [Comments in the code](#comments-in-the-code)
+- [Yes, AI was here](#yes-ai-was-here)
+- [User agent](#user-agent)
+- [Playwright config notes](#playwright-config-notes)
+- [Project structure](#project-structure)
+
+---
+
 ## Quick start
 
 ### Prerequisites
