@@ -1,5 +1,8 @@
 import { Page, expect, Locator} from '@playwright/test';
 
+// [Nicolas] Locators and test flow.
+// [AI-assisted] Visibility refactored to scrollIntoViewIfNeeded() + expect().toBeVisible({ timeout }).
+
 //#region Page Objects
 export class PropertyPage {
   propertyBreadCrumb: Locator;
@@ -16,35 +19,19 @@ export class PropertyPage {
   //#endregion
 
   //#region Actions
-  async propertyBreadCrumbIsCorrect() {
-    // Assert that the breadcrumb is visible
-    const visible = await this.propertyBreadCrumb.isVisible();
-    if (visible) {
-      console.log('Breadcrumb is visible');
-    } else {
-      console.log('Breadcrumb is not visible');
-    }
-    expect(visible).toBe(true);
-}
 
+  // Expects the about section to be visible
   async propertyAboutIsVisible() {
-    // Scroll the About section into view and wait for it to become visible.
-    const visible = await this.propertyAbout.isVisible();
-    if (visible) {
-      console.log('About is visible');
-    } else {
-      console.log('About is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.propertyAbout.scrollIntoViewIfNeeded();
+    await expect(this.propertyAbout).toBeVisible({ timeout: 10000 });
+    console.log('About section is visible');
   }
+
+  // Expects the photos section to be visible
   async propertyPhotosIsVisible() {
-    const visible = await this.propertyPhotos.isVisible();
-    if (visible) {
-      console.log('Photos is visible');
-    } else {
-      console.log('Photos is not visible');
-    }
-    expect(visible).toBe(true);
+    await this.propertyPhotos.scrollIntoViewIfNeeded();
+    await expect(this.propertyPhotos).toBeVisible({ timeout: 10000 });
+    console.log('Photos section is visible');
   }
   //#endregion
 }

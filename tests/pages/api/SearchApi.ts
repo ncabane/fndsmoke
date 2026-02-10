@@ -1,6 +1,9 @@
 import type { APIRequestContext } from '@playwright/test';
 import { urls } from '../../config/urls';
 
+// [Nicolas] Idea to centralise API + POM-style client; choice of endpoint and body shape.
+// [AI-assisted] Class structure, types, getDefaultSearchBody(), search() with headers/urls from config.
+
 export type SearchRequestBody = {
   aggregationType: string[];
   constructionType: string[];
@@ -11,7 +14,7 @@ export type SearchRequestBody = {
   cultureInfo: string;
   page: number;
 };
-
+  
 export class SearchApi {
   constructor(private readonly request: APIRequestContext) {}
 

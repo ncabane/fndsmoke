@@ -18,10 +18,11 @@ test('Search City Smoke Test', async ({ page }) => {
   if (await cookies.isRobotCheckVisible()) {
     return;
   }
-  // Clickes the search button
+  // Clicks the search button
   await home.homepageSearchClickSearchButton();
 
   // Expects the results page header to be correct
   await resultsPage.resultsPageHeaderIsCorrect();
+  
   //#endregion
 });

@@ -1,5 +1,8 @@
 import { Page, expect, Locator} from '@playwright/test';
 
+// [Nicolas] Locators and overall design.
+// [AI-assisted] cookiesClickAcceptButton: try/expect+click with timeout; isRobotCheckVisible: 2s wait instead of one-off isVisible().
+
 //#region Page Objects
 export class CookiesPage {
   cookiesAcceptButton: Locator;
@@ -10,23 +13,33 @@ export class CookiesPage {
   //#endregion
 
   //#region Actions
+
+  // Clicks the cookies accept button
   async cookiesClickAcceptButton() {
-    const visible = await this.cookiesAcceptButton.isVisible();
-    if (visible) {
-      console.log('Cookies accept button is visible and clicked on it');
+    // Tries to click the cookies accept button
+    try {
+      await expect(this.cookiesAcceptButton).toBeVisible({ timeout: 5000 });
       await this.cookiesAcceptButton.click();
-    } else {
-      console.log('Cookies accept button is not visible, test continues');
+      console.log('Cookies accept button is visible and clicked');
+    } catch {
+      // Cookie banner not shown or already dismissed; test continues
+      console.log('Cookies accept button not visible, test continues');
     }
   }
 
+  // Checks if the robot check is visible
   async isRobotCheckVisible(): Promise<boolean> {
     const robotText = this.page.getByText(/ik ben geen robot|i am not a robot/i);
-    const visible = await robotText.isVisible();
-    if (visible) {
+    
+    // Tries to check if the robot check is visible
+    try {
+      await expect(robotText).toBeVisible({ timeout: 2000 });
       console.log('Robot check detected, stopping homepage smoke assertions.');
+      return true;
+    } catch {
+      // Robot check not visible, test continues
+      return false;
     }
-    return visible;
   }
   //#endregion
 }

@@ -2,54 +2,52 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
+// [Nicolas] Project layout, browser choice, env loading, retries: 0, file cleanup.
+// [AI-assisted] userAgent from env; dotenv for .env; trace: retain-on-failure
+
+// Loads the environment variables
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+// Gets the user agent from the environment variables
 const FUNDA_USER_AGENT = process.env.FUNDA_USER_AGENT;
 
+// Throws an error if the user agent is not set
 if (!FUNDA_USER_AGENT) {
   throw new Error('FUNDA_USER_AGENT env var is not set. See README for setup.');
 }
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
+// Defines the test configuration
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
+ 
+  // Runs tests in files in parallel
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+ 
+  // Fails the build on CI if test.only is used
   forbidOnly: !!process.env.CI,
-  /* Removed retries because we want to fail fast */
-  retries: process.env.CI ? 0 : 0,
-  /* Opt out of parallel tests on CI. */
+  retries: 0,
+  
+  // Opts out of parallel tests on CI.
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  
+  // Uses the list reporter.
+  reporter: 'list',
+  
+  // Shared settings for all the projects below.
+  // Retains the trace on failure.
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
-  /* Configure projects for major browsers */
+  // Configure projects for major browsers
   projects: [
     {
       name: 'chromium',
-      // Use Desktop Chrome device settings but override the user agent
+      // Uses Desktop Chrome device settings but overrides the user agent
       use: { 
         ...devices['Desktop Chrome'],
         userAgent: FUNDA_USER_AGENT,
       },
     },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
