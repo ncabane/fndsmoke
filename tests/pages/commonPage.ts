@@ -6,6 +6,10 @@ export class CommonPage {
   mainNavigationHeader: Locator
   contentInfoFooter: Locator
   mainFooter: Locator
+  mainFooterVerkoopJeHuisLink: Locator;
+  mainFooterMeldJeAanLink: Locator;
+  mainFooterInloggenLink: Locator;
+  mainFooterOverFundaLink: Locator;
 
   
   constructor(private readonly page: Page)
@@ -14,6 +18,10 @@ export class CommonPage {
     this.mainNavigationHeader = this.page.getByLabel('Main');
     this.contentInfoFooter = this.page.getByRole('contentinfo');
     this.mainFooter = this.page.locator('//*[@id="__nuxt"]/div/div[2]/footer/div[2]');
+    this.mainFooterVerkoopJeHuisLink = this.page.getByLabel('Verkoop je huis op Funda');
+    this.mainFooterMeldJeAanLink = this.page.getByLabel('Meld je aan bij Funda');
+    this.mainFooterInloggenLink = this.page.getByLabel('Inloggen Mijn Huis');
+    this.mainFooterOverFundaLink = this.page.getByLabel('Over Funda');
   }
 //#endregion
 
@@ -66,6 +74,42 @@ export class CommonPage {
       console.log('Main footer is visible');
     } else {
       console.log('Main footer is not visible');
+    }
+    expect(visible).toBe(true);
+  }
+  async mainFooterVerkoopJeHuisLinkPresent() {
+    const visible = await this.mainFooterVerkoopJeHuisLink.isVisible();
+    if (await this.mainFooterVerkoopJeHuisLink.isVisible()) {
+      console.log('Verkoop je huis link is visible');
+    } else {
+      console.log('Verkoop je huis link is not visible');
+    }
+    expect(visible).toBe(true);
+  }
+  async mainFooterMeldJeAanLinkIsPresent() {
+    const visible = await this.mainFooterMeldJeAanLink.isVisible();
+    if (await this.mainFooterMeldJeAanLink.isVisible()) {
+      console.log('Meld je aan link is visible');
+    } else {
+      console.log('Meld je aan link is not visible');
+    }
+    expect(visible).toBe(true);
+  }
+  async mainFooterInloggenLinkIsPresent() {
+    const visible = await this.mainFooterInloggenLink.isVisible();
+    if (await this.mainFooterInloggenLink.isVisible()) {
+      console.log('Inloggen link is visible');
+    } else {
+      console.log('Inloggen link is not visible');
+    }
+    expect(visible).toBe(true);
+  }
+  async mainFooterOverFundaLinkIsPresent() {
+    const visible = await this.mainFooterOverFundaLink.isVisible();
+    if (await this.mainFooterOverFundaLink.isVisible()) {
+      console.log('Over Funda link is visible');
+    } else {
+      console.log('Over Funda link is not visible');
     }
     expect(visible).toBe(true);
   }

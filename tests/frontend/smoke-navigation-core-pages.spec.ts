@@ -17,7 +17,11 @@ test('Navigation Core Pages Smoke Test', async ({ page }) => {
   if (await cookies.isRobotCheckVisible()) {
     return;
   }
-  await home.homepageTitleIsCorrect();
+  await common.mainFooterIsPresent();
+  await common.mainFooterVerkoopJeHuisLinkPresent();
+  await common.mainFooterMeldJeAanLinkIsPresent();
+  await common.mainFooterInloggenLinkIsPresent();
+  await common.mainFooterOverFundaLinkIsPresent();
 
   //#endregion
 });

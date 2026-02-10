@@ -66,6 +66,7 @@ export class HomePage {
     expect(visible).toBe(true);
   }
   async homepageSearchClickSearchButton(){
+  await this.page.waitForLoadState('domcontentloaded');
   const visible =  await this.homepageSearchButton.isVisible();
     if (visible) {
       console.log('Search button is visible and clicked on it');
