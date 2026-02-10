@@ -2,7 +2,7 @@
 
 Smoke tests for the Funda website — because we like to be safe and sound.
 
-Hello and thank you for taking the time to review my assignment. You're awesome! I hope you have fun with it, as I had fun working on it.
+Hello, and thank you for taking the time to review my assignment. You're awesome! I hope you have fun with it, as I had fun working on it.
 You are free to use any of the code on your current projects, should you find it useful.
 
 ---
@@ -71,7 +71,7 @@ yarn playwright show-report
 
 ### Test framework
 
-I use **Playwright with TypeScript** — its stability, speed, strong TypeScript support, and first-class API testing, which fits well with scalable smoke testing..
+I use **Playwright with TypeScript** — due to its stability, speed, strong TypeScript support, and first-class API testing, which fits well with scalable smoke testing.
 
 ### Code editor
 
@@ -81,12 +81,12 @@ I use **Cursor** as my editor. It has proven to me that I can deliver better, fa
 
 ## Test approach
 
-For these smoke tests I imagined myself on the team asking: *what is the minimum the website must offer, and if this minimum fails, is deploying worth it?*
+For these smoke tests, I imagined myself on the team asking: *What is the minimum the website must offer, and if this minimum fails, is deploying worth it?*
 
-Because this is an assignment, I kept the code **simple but scalable** — easy to recycle, reuse, and expand when needed.
+Since this is an assignment, I kept the code **simple yet scalable** — easy to reuse, recycle, and expand when needed.
 
 ### What I intentionally did not include
-I avoided long, end-to-end scenarios (e.g. full contact flows, multi-step user journeys) to keep smoke tests fast, reliable, and independent. These flows are better suited for regression or exploratory testing.
+I avoided long, end-to-end scenarios (e.g., full contact flows, multi-step user journeys) to keep smoke tests fast, reliable, and independent of each other. These flows are better suited for regression or exploratory testing.
 
 ---
 
@@ -121,7 +121,7 @@ I believe AI-assisted development is a great way to write better tests and incre
 In the codebase, comments mark the split:
 
 - **`[Nicolas]`** — My design, locators, test flow, and structure.
-- **`[AI-assisted]`** — Refactors or additions suggested by AI (e.g. stability fixes, consistency).
+- **`[AI-assisted]`** — Refactors or additions suggested by AI (e.g., stability fixes, consistency).
 
 **Main AI-assisted areas:**
 
@@ -136,7 +136,7 @@ The **spec files** (test flows and steps) are written by me; AI helped with impo
 
 ## User agent
 
-Because the user agent value is sensitive, I made sure it is **never hard-coded or published**. To run the tests you need a **`.env`** file in the project root:
+Because the user agent value is sensitive, I made sure it is **never hard-coded or published**. To run the tests, you need a **`.env`** file in the project root:
 
 ```
 FUNDA_USER_AGENT=<agent value provided for this assignment>
@@ -154,7 +154,7 @@ I **removed the Playwright GitHub Actions workflow** (`playwright.yml`) to avoid
 - **Chromium only** — For smoke tests, I focused on a single browser to keep execution fast and reduce noise. Cross-browser coverage would be part of a broader regression suite.
 - **Trace: retain-on-failure** — So failed runs still produce a trace for debugging.
 
-For API tests in production I would typically use **Postman + Newman** for CI/CD, but for this assignment I kept everything in **Playwright** so the repo stays simple and everything runs with one tool.
+For API tests in production, I would typically use **Postman + Newman** for CI/CD, but for this assignment, I kept everything in **Playwright** so the repo stays simple, and everything runs with one tool.
 
 ---
 
