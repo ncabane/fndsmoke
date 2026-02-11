@@ -79,6 +79,12 @@ export class CommonPage {
     console.log('Verkoop je huis link is visible');
   }
 
+  // Click on the Verkoop je huis link
+  async clickOnVerkoopJeHuisLink() {
+    await this.mainFooterVerkoopJeHuisLink.click();
+    await this.page.waitForLoadState('domcontentloaded');
+  }
+
   // Expects the Meld je aan link to be present
   async mainFooterMeldJeAanLinkIsPresent() {
     await this.mainFooterMeldJeAanLink.scrollIntoViewIfNeeded();

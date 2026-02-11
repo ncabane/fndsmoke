@@ -106,13 +106,13 @@ I avoided long, end-to-end scenarios (e.g., full contact flows, multi-step user 
 
 ## Test list
 
-| # | Test | Spec file |
-|---|------|-----------|
-| 1 | Homepage smoke test | `tests/ui-automation/tests/smoke-homepage.spec.ts` | Loads the homepage, asserts for crucial page elements
-| 2 | Search city smoke test | `tests/ui-automation/tests/smoke-searchCity.spec.ts` | Loads the homepage, clicks on search, asserts a crucial element on the results page
-| 3 | Property detail smoke test | `tests/ui-automation/tests/smoke-seeProperty.spec.ts` | Loads the homepage, clicks on search, clicks onthe  first result, asserts crucial elements on a property
-| 4 | Navigation core pages smoke test | `tests/ui-automation/tests/smoke-navigation-core-pages.spec.ts` | Loads the homepage, asserts that the main footer and four critical links are present, clicks on "Sell your house", asserts that the correct title is present
-| 5 | Search API smoke test | `tests/api-automation/tests/smoke-search.api.spec.ts` | Performs a city search on the API, asserts that the response structure is ok
+| # | Test | Spec file | Description |
+|---|------|-----------|-------------|
+| 1 | Homepage smoke test | `tests/ui-automation/tests/smoke-homepage.spec.ts` | Loads the homepage and asserts crucial page elements |
+| 2 | Search city smoke test | `tests/ui-automation/tests/smoke-searchCity.spec.ts` | Loads the homepage, clicks on search, and asserts a crucial element on the results page |
+| 3 | Property detail smoke test | `tests/ui-automation/tests/smoke-seeProperty.spec.ts` | Loads the homepage, clicks on search, clicks on the first result, and asserts crucial elements on a property |
+| 4 | Navigation core pages smoke test | `tests/ui-automation/tests/smoke-navigation-core-pages.spec.ts` | Loads the homepage, asserts that the main footer and four critical links are present, clicks on \"Sell your house\", and asserts that the correct title is present |
+| 5 | Search API smoke test | `tests/api-automation/tests/smoke-search.api.spec.ts` | Performs a city search on the API and asserts that the response structure is OK |
 
 ---
 

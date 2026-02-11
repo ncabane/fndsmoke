@@ -4,6 +4,7 @@ import { CommonPage } from './page-objects/commonPage';
 import { CookiesPage } from './page-objects/cookiesPage';
 import { ResultsPage } from './page-objects/resultsPage';
 import { PropertyPage } from './page-objects/propertyPage';
+import { CorePage } from './page-objects/corePage';
 
 // [Nicolas] Idea to centralise shared UI setup into fixtures.
 // [AI-assisted] Fixture implementation and typing based on Playwright docs.
@@ -14,6 +15,7 @@ type UIFixtures = {
   cookies: CookiesPage;
   results: ResultsPage;
   property: PropertyPage;
+  core: CorePage;
 };
 
 export const test = base.extend<UIFixtures>({
@@ -27,6 +29,10 @@ export const test = base.extend<UIFixtures>({
 
   results: async ({ page }, use) => {
     await use(new ResultsPage(page));
+  },
+
+  core: async ({ page }, use) => {
+    await use(new CorePage(page));
   },
 
   property: async ({ page }, use) => {
