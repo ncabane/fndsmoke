@@ -140,7 +140,7 @@ In the codebase, comments mark the split:
 **Main AI-assisted areas:**
 
 - **Playwright config** — Loading the Funda user agent from env, dotenv, `trace: retain-on-failure`, `retries: 0`.
-- **Page objects** — Replacing one-off `isVisible()` + assert with `expect().toBeVisible({ timeout })` and `scrollIntoViewIfNeeded()` to reduce flakiness; I kept the `console.log` statements for the assignment.
+- **Page objects** — Replacing one-off `isVisible()` + assert with `expect().toBeVisible({ timeout })` to reduce flakiness; I kept the `console.log` statements for the assignment.
 - **CookiesPage** — Cookie button wait/click with try/catch; robot-check detection with a short timeout.
 - **API (SearchApi, urls)** — POM-style API client, types, and centralised `api.search` URL.
 - **Custom fixtures** — Implementing Playwright fixtures from my idea to centralise shared UI/API setup (`tests/ui-automation/fixtures.ts`, `tests/api-automation/fixtures.ts`).

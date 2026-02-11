@@ -60,21 +60,18 @@ export class CommonPage {
 
   // Expects the content info footer to be present
   async contentInfoFooterIsPresent() {
-    await this.contentInfoFooter.scrollIntoViewIfNeeded();
     await expect(this.contentInfoFooter).toBeVisible({ timeout: 10000 });
     console.log('Content info footer is visible');
   }
 
   // Expects the main footer to be present
   async mainFooterIsPresent() {
-    await this.mainFooter.scrollIntoViewIfNeeded();
     await expect(this.mainFooter).toBeVisible({ timeout: 10000 });
     console.log('Main footer is visible');
   }
 
   // Expects the Verkoop je huis link to be present
   async mainFooterVerkoopJeHuisLinkPresent() {
-    await this.mainFooterVerkoopJeHuisLink.scrollIntoViewIfNeeded();
     await expect(this.mainFooterVerkoopJeHuisLink).toBeVisible({ timeout: 10000 });
     console.log('Verkoop je huis link is visible');
   }
@@ -87,21 +84,18 @@ export class CommonPage {
 
   // Expects the Meld je aan link to be present
   async mainFooterMeldJeAanLinkIsPresent() {
-    await this.mainFooterMeldJeAanLink.scrollIntoViewIfNeeded();
     await expect(this.mainFooterMeldJeAanLink).toBeVisible({ timeout: 10000 });
     console.log('Meld je aan link is visible');
   }
 
   // Expects the Inloggen link to be present
   async mainFooterInloggenLinkIsPresent() {
-    await this.mainFooterInloggenLink.scrollIntoViewIfNeeded();
     await expect(this.mainFooterInloggenLink).toBeVisible({ timeout: 10000 });
     console.log('Inloggen link is visible');
   }
 
   // Expects the Over Funda link to be present
   async mainFooterOverFundaLinkIsPresent() {
-    await this.mainFooterOverFundaLink.scrollIntoViewIfNeeded();
     await expect(this.mainFooterOverFundaLink).toBeVisible({ timeout: 10000 });
     console.log('Over Funda link is visible');
   }
