@@ -27,8 +27,6 @@ export class ResultsPage {
    
     // Waits for the page to load
     await this.page.waitForLoadState('domcontentloaded');
-    // Scrolls the first property link into view and waits for it to be visible
-    await this.resultsPageFirstPropertyLink.scrollIntoViewIfNeeded();
     await expect(this.resultsPageFirstPropertyLink).toBeVisible({ timeout: 10000 });
     console.log('First property link is visible and clicked');
     await this.resultsPageFirstPropertyLink.click();

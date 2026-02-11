@@ -19,7 +19,6 @@ export class CorePage {
   // Only one assertion for this assignment; more can be added if needed.
   async corePageVerkoopJeHuisHeadingTitleIsVisible() {
     await this.page.waitForLoadState('domcontentloaded');
-    await this.corePageSellYourHouseTitle.scrollIntoViewIfNeeded();
     await expect(this.corePageSellYourHouseTitle).toBeVisible({ timeout: 10000 });
     console.log('Sell your house title is visible');
   }
