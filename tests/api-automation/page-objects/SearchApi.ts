@@ -1,5 +1,5 @@
 import type { APIRequestContext } from '@playwright/test';
-import { urls } from '../../config/urls';
+import { urls } from '../../../config/urls';
 
 // [Nicolas] Idea to centralise API + POM-style client; choice of endpoint and body shape.
 // [AI-assisted] Class structure, types, getDefaultSearchBody(), search() with headers/urls from config.

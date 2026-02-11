@@ -1,5 +1,5 @@
 import { Page, expect, Locator } from '@playwright/test';
-import { urls } from '../config/urls';
+import { urls } from '../../../config/urls';
 
 // [Nicolas] Page structure, locators, test flow.
 // [AI-assisted] File recreated after loss; visibility methods use expect().toBeVisible({ timeout }) + console.log.

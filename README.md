@@ -67,10 +67,10 @@ Without this, tests may hit robot detection and fail. See [User Agent](#user-age
 | Goal | Command |
 |------|--------|
 | **Run all tests (headless)** | `yarn test` or `yarn playwright test` |
-| **Run all tests with browser visible** | `yarn test:headed` or `yarn playwright test --headed` |
+| **Run all UI tests with browser visible** | `yarn test:headed` or `yarn playwright test --headed` |
 | **Run tests in debug mode (step-through)** | `yarn test:debug` or `yarn playwright test --debug` |
-| **Run a single test file** | `yarn playwright test tests/frontend/smoke-homepage.spec.ts` |
-| **Run only API tests** | `yarn playwright test tests/api/` |
+| **Run a single UI test file** | `yarn playwright test tests/ui-automation/tests/smoke-homepage.spec.ts` |
+| **Run only API tests** | `yarn playwright test tests/api-automation/tests/` |
 | **List all tests** | `yarn test:list` or `yarn playwright test --list` |
 
 After a run, open the HTML report with:
@@ -108,11 +108,11 @@ I avoided long, end-to-end scenarios (e.g., full contact flows, multi-step user 
 
 | # | Test | Spec file |
 |---|------|-----------|
-| 1 | Homepage smoke test | `tests/frontend/smoke-homepage.spec.ts` |
-| 2 | Search city smoke test | `tests/frontend/smoke-searchCity.spec.ts` |
-| 3 | Property detail smoke test | `tests/frontend/smoke-seeProperty.spec.ts` |
-| 4 | Navigation core pages smoke test | `tests/frontend/smoke-navigation-core-pages.spec.ts` |
-| 5 | Search API smoke test | `tests/api/smoke-search.api.spec.ts` |
+| 1 | Homepage smoke test | `tests/ui-automation/tests/smoke-homepage.spec.ts` |
+| 2 | Search city smoke test | `tests/ui-automation/tests/smoke-searchCity.spec.ts` |
+| 3 | Property detail smoke test | `tests/ui-automation/tests/smoke-seeProperty.spec.ts` |
+| 4 | Navigation core pages smoke test | `tests/ui-automation/tests/smoke-navigation-core-pages.spec.ts` |
+| 5 | Search API smoke test | `tests/api-automation/tests/smoke-search.api.spec.ts` |
 
 ---
 
@@ -143,6 +143,7 @@ In the codebase, comments mark the split:
 - **Page objects** — Replacing one-off `isVisible()` + assert with `expect().toBeVisible({ timeout })` and `scrollIntoViewIfNeeded()` to reduce flakiness; I kept the `console.log` statements for the assignment.
 - **CookiesPage** — Cookie button wait/click with try/catch; robot-check detection with a short timeout.
 - **API (SearchApi, urls)** — POM-style API client, types, and centralised `api.search` URL.
+- **Custom fixtures** — Implementing Playwright fixtures from my idea to centralise shared UI/API setup (`tests/ui-automation/fixtures.ts`, `tests/api-automation/fixtures.ts`).
 
 The **spec files** (test flows and steps) are written by me; AI helped with import casing and small typo fixes.
 
@@ -178,25 +179,29 @@ For API tests in production, I would typically use **Postman + Newman** for CI/C
 fndsmoke/
 ├── .env                 # Not committed; add FUNDA_USER_AGENT here
 ├── playwright.config.ts
+├── config/
+│   └── urls.ts          # Centralised URLs for UI and API
 ├── tests/
-│   ├── config/
-│   │   └── urls.ts      # Centralised URLs for UI and API
-│   ├── pages/           # Page objects (POM)
-│   │   ├── api/
-│   │   │   └── SearchApi.ts
-│   │   ├── commonPage.ts
-│   │   ├── CookiesPage.ts
-│   │   ├── corePage.ts
-│   │   ├── HomePage.ts
-│   │   ├── propertyPage.ts
-│   │   └── resultsPage.ts
-│   ├── frontend/        # UI smoke specs
-│   │   ├── smoke-homepage.spec.ts
-│   │   ├── smoke-searchCity.spec.ts
-│   │   ├── smoke-seeProperty.spec.ts
-│   │   └── smoke-navigation-core-pages.spec.ts
-│   └── api/
-│       └── smoke-search.api.spec.ts
+│   ├── ui-automation/   # UI smoke tests + page objects + fixtures
+│   │   ├── fixtures.ts  # Custom UI fixtures (home/common/cookies/results/property)
+│   │   ├── page-objects/
+│   │   │   ├── commonPage.ts
+│   │   │   ├── cookiesPage.ts
+│   │   │   ├── corePage.ts
+│   │   │   ├── homePage.ts
+│   │   │   ├── propertyPage.ts
+│   │   │   └── resultsPage.ts
+│   │   └── tests/
+│   │       ├── smoke-homepage.spec.ts
+│   │       ├── smoke-searchCity.spec.ts
+│   │       ├── smoke-seeProperty.spec.ts
+│   │       └── smoke-navigation-core-pages.spec.ts
+│   └── api-automation/  # API smoke tests + API client + fixtures
+│       ├── fixtures.ts  # Custom API fixtures (searchApi)
+│       ├── page-objects/
+│       │   └── SearchApi.ts
+│       └── tests/
+│           └── smoke-search.api.spec.ts
 └── README.md
 ```
 
