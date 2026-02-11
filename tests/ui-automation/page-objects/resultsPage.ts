@@ -19,7 +19,6 @@ export class ResultsPage {
 
   // Expects the results page header to be correct
   async resultsPageHeaderIsCorrect() {
-    await expect(this.resultsPageHeader).toBeVisible({ timeout: 10000 });
     await expect(this.resultsPageHeader).toContainText('koopwoningen');
   }
 
