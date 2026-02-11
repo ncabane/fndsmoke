@@ -1,10 +1,8 @@
-import { test, expect } from '@playwright/test';
-import { SearchApi } from '../pages/api/SearchApi';
+import { test, expect } from '../fixtures';
 
 test('Search API – status, JSON, friendlyUrl, listings, key fields', async ({
-  request,
+  searchApi,
 }) => {
-  const searchApi = new SearchApi(request);
   const body = searchApi.getDefaultSearchBody();
   const response = await searchApi.search(body);
 

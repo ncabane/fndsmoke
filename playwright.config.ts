@@ -18,7 +18,12 @@ if (!FUNDA_USER_AGENT) {
 
 // Defines the test configuration
 export default defineConfig({
+  // All tests live under ./tests (ui-automation + api-automation)
   testDir: './tests',
+  testMatch: [
+    'ui-automation/tests/**/*.spec.ts',
+    'api-automation/tests/**/*.spec.ts',
+  ],
  
   // Runs tests in files in parallel
   fullyParallel: true,

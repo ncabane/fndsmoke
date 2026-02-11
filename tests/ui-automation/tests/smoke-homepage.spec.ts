@@ -1,18 +1,8 @@
-import { test } from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
-import { CommonPage } from '../pages/commonPage';
-import { CookiesPage } from '../pages/cookiesPage';
+import { test } from '../fixtures';
 
-test('Homepage Smoke Test', async ({ page }) => {
-  const common = new CommonPage(page);
-  const home = new HomePage(page);
-  const cookies = new CookiesPage(page);
+test('Homepage Smoke Test', async ({ home, common, cookies }) => {
 
   //#region actual tests
-  await home.goto();
-  await common.verifyUserAgent();
-  await cookies.cookiesClickAcceptButton();
-
   // If Funda shows an "I'm not a robot" captcha, stop the smoke test early
   if (await cookies.isRobotCheckVisible()) {
     return;
