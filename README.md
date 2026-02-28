@@ -1,5 +1,8 @@
 # fndsmoke
 
+## Important note
+This was an assignment for a job interview. If you clone it, possibly all of the tests will fail, as you need a custom user agent. However, you can use the code and you can look at it to have an example of my work.
+
 Smoke tests for the Funda website — because we like to be safe and sound.
 
 Hello, and thank you for taking the time to review my assignment. You're awesome! I hope you have fun with it, as I had fun working on it.
