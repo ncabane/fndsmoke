@@ -26,7 +26,7 @@ export class ResultsPage {
    
     // Waits for the page to load
     await this.page.waitForLoadState('domcontentloaded');
-    await expect(this.resultsPageFirstPropertyLink).toBeVisible({ timeout: 10000 });
+    await expect(this.resultsPageFirstPropertyLink).toBeVisible();
     console.log('First property link is visible and clicked');
     await this.resultsPageFirstPropertyLink.click();
   }

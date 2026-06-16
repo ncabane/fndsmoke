@@ -16,7 +16,7 @@ export class CookiesPage {
 
   // Clicks the cookies accept button
   async cookiesClickAcceptButton() {
-    // Tries to click the cookies accept button
+    // Tries to click the cookies accept button, waits for 5 seconds if the button is not visible
     try {
       await expect(this.cookiesAcceptButton).toBeVisible({ timeout: 5000 });
       await this.cookiesAcceptButton.click();
@@ -31,7 +31,7 @@ export class CookiesPage {
   async isRobotCheckVisible(): Promise<boolean> {
     const robotText = this.page.getByText(/ik ben geen robot|i am not a robot/i);
     
-    // Tries to check if the robot check is visible
+    // Tries to check if the robot check is visible, waits for 2 seconds if the text is not visible
     try {
       await expect(robotText).toBeVisible({ timeout: 2000 });
       console.log('Robot check detected, stopping homepage smoke assertions.');

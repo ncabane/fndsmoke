@@ -1,7 +1,7 @@
 import { Page, expect, Locator} from '@playwright/test';
 
 // [Nicolas] Locators and test flow.
-// [AI-assisted] Visibility refactored to scrollIntoViewIfNeeded() + expect().toBeVisible({ timeout }).
+// [AI-assisted] Visibility refactored to scrollIntoViewIfNeeded().
 
 //#region Page Objects
 export class CorePage {
@@ -19,7 +19,7 @@ export class CorePage {
   // Only one assertion for this assignment; more can be added if needed.
   async corePageVerkoopJeHuisHeadingTitleIsVisible() {
     await this.page.waitForLoadState('domcontentloaded');
-    await expect(this.corePageSellYourHouseTitle).toBeVisible({ timeout: 10000 });
+    await expect(this.corePageSellYourHouseTitle).toBeVisible();
     console.log('Sell your house title is visible');
   }
 

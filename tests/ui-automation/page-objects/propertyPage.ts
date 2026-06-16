@@ -1,7 +1,6 @@
 import { Page, expect, Locator} from '@playwright/test';
 
 // [Nicolas] Locators and test flow.
-// [AI-assisted] Visibility refactored to + expect().toBeVisible({ timeout }).
 
 //#region Page Objects
 export class PropertyPage {
@@ -22,13 +21,13 @@ export class PropertyPage {
 
   // Expects the about section to be visible
   async propertyAboutIsVisible() {
-    await expect(this.propertyAbout).toBeVisible({ timeout: 10000 });
+    await expect(this.propertyAbout).toBeVisible();
     console.log('About section is visible');
   }
 
   // Expects the photos section to be visible
   async propertyPhotosIsVisible() {
-    await expect(this.propertyPhotos).toBeVisible({ timeout: 10000 });
+    await expect(this.propertyPhotos).toBeVisible();
     console.log('Photos section is visible');
   }
   //#endregion
