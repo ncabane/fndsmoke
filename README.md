@@ -1,9 +1,10 @@
-# fndsmoke
+# fndsmoke (Funda Smoke)
 
-Smoke tests for the Funda website — because we like to be safe and sound.
+This test project consist on five smoke tests targeting Funda (a major real-estate website in the Netherlands). 
 
-Hello, and thank you for taking the time to review my assignment. You're awesome! I hope you have fun with it, as I had fun working on it.
-You are free to use any of the code on your current projects, should you find it useful.
+The intention of the repo is to show the code, not the result of it. I was given a user agent to proceed with the tests but this user agent was temporary, therefore, if you clone the repo and try to run the tests, they will certainly timeout and will not pass.
+
+However, I promise you that the code is worth checking!
 
 ---
 
@@ -151,6 +152,10 @@ The **spec files** (test flows and steps) are written by me; AI helped with impo
 
 ## User agent
 
+**Important update**: the user agent was provided for a limited time, therefore it has expired and **IT WILL NOT WORK**.
+
+---
+
 Because the user agent value is sensitive, I made sure it is **never hard-coded or published**. To run the tests, you need a **`.env`** file in the project root:
 
 ```
@@ -159,8 +164,7 @@ FUNDA_USER_AGENT=<agent value provided for this assignment>
 
 Without it, tests can fail due to robot detection. The value is loaded via `dotenv` and never logged.
 
-I **removed the Playwright GitHub Actions workflow** (`playwright.yml`) to avoid any risk of exposing the secret and to keep the assignment focused; the brief did not require CI/CD.
-
+I **removed the Playwright GitHub Actions workflow** (`playwright.yml`) to avoid any risk of exposing the secret and to keep the assignment focused.
 ---
 
 ## Playwright config notes
