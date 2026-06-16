@@ -1,7 +1,7 @@
 import { Page, expect, Locator} from '@playwright/test';
 
 // [Nicolas] Page structure, locators, test flow.
-// [AI-assisted] Visibility methods refactored to expect().toBeVisible({ timeout }) + scrollIntoViewIfNeeded() for stability; console.log kept for assignment.
+// [AI-assisted] Visibility methods refactored to scrollIntoViewIfNeeded() for stability; console.log kept for clarity.
 
 //#region Page Objects
 export class CommonPage {
@@ -34,19 +34,19 @@ export class CommonPage {
 
   // Expects the Funda logo to be present
   async fundaLogoIsPresent() {
-    await expect(this.fundaLogo).toBeVisible({ timeout: 10000 });
+    await expect(this.fundaLogo).toBeVisible();
     console.log('Funda logo is visible');
   }
 
   // Expects the main navigation header to be present
   async mainNavigationHeaderIsPresent() {
-    await expect(this.mainNavigationHeader).toBeVisible({ timeout: 10000 });
+    await expect(this.mainNavigationHeader).toBeVisible();
     console.log('Main navigation header is visible');
   }
 
-  // Verifies the browser is using the Funda interview user agent
+  // Verifies the browser is using the Funda user agent
   async verifyUserAgent() {
-    // Verify the browser is actually using the special Funda interview user agent
+    // Verify the browser is actually using the assigned Funda user agent
     const ua = await this.page.evaluate(() => navigator.userAgent);
     const expectedUA = process.env.FUNDA_USER_AGENT;
     if (expectedUA) {
@@ -60,19 +60,19 @@ export class CommonPage {
 
   // Expects the content info footer to be present
   async contentInfoFooterIsPresent() {
-    await expect(this.contentInfoFooter).toBeVisible({ timeout: 10000 });
+    await expect(this.contentInfoFooter).toBeVisible();
     console.log('Content info footer is visible');
   }
 
   // Expects the main footer to be present
   async mainFooterIsPresent() {
-    await expect(this.mainFooter).toBeVisible({ timeout: 10000 });
+    await expect(this.mainFooter).toBeVisible();
     console.log('Main footer is visible');
   }
 
   // Expects the Verkoop je huis link to be present
   async mainFooterVerkoopJeHuisLinkPresent() {
-    await expect(this.mainFooterVerkoopJeHuisLink).toBeVisible({ timeout: 10000 });
+    await expect(this.mainFooterVerkoopJeHuisLink).toBeVisible();
     console.log('Verkoop je huis link is visible');
   }
 
@@ -84,25 +84,25 @@ export class CommonPage {
 
   // Expects the Meld je aan link to be present
   async mainFooterMeldJeAanLinkIsPresent() {
-    await expect(this.mainFooterMeldJeAanLink).toBeVisible({ timeout: 10000 });
+    await expect(this.mainFooterMeldJeAanLink).toBeVisible();
     console.log('Meld je aan link is visible');
   }
 
   // Expects the Inloggen link to be present
   async mainFooterInloggenLinkIsPresent() {
-    await expect(this.mainFooterInloggenLink).toBeVisible({ timeout: 10000 });
+    await expect(this.mainFooterInloggenLink).toBeVisible();
     console.log('Inloggen link is visible');
   }
 
   // Expects the Over Funda link to be present
   async mainFooterOverFundaLinkIsPresent() {
-    await expect(this.mainFooterOverFundaLink).toBeVisible({ timeout: 10000 });
+    await expect(this.mainFooterOverFundaLink).toBeVisible();
     console.log('Over Funda link is visible');
   }
 
   // Expects the breadcrumbs to be visible
   async breadCrumbsAreVisible() {
-    await expect(this.breadCrumbs).toBeVisible({ timeout: 10000 });
+    await expect(this.breadCrumbs).toBeVisible();
     console.log('Breadcrumbs are visible');
   }
   //#endregion
