@@ -1,10 +1,8 @@
-# fndsmoke (Funda Smoke)
+# fndsmoke Playwright and TypeScript code examples
 
-This test project consist on five smoke tests targeting Funda (a major real-estate website in the Netherlands). 
+## Important note
+This was an assignment for a job interview. If you clone it, possibly all of the tests will fail, as you need a custom user agent. However, you can use the code and you can look at it to have an example of my work.
 
-The intention of the repo is to show the code, not the result of it. I was given a user agent to proceed with the tests but this user agent was temporary, therefore, if you clone the repo and try to run the tests, they will certainly timeout and will not pass.
-
-However, I promise you that the code is worth checking!
 
 ---
 
