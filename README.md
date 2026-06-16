@@ -150,6 +150,10 @@ The **spec files** (test flows and steps) are written by me; AI helped with impo
 
 ## User agent
 
+**Important update**: the user agent was provided for a limited time, therefore it has expired and **IT WILL NOT WORK**.
+
+---
+
 Because the user agent value is sensitive, I made sure it is **never hard-coded or published**. To run the tests, you need a **`.env`** file in the project root:
 
 ```
@@ -158,8 +162,7 @@ FUNDA_USER_AGENT=<agent value provided for this assignment>
 
 Without it, tests can fail due to robot detection. The value is loaded via `dotenv` and never logged.
 
-I **removed the Playwright GitHub Actions workflow** (`playwright.yml`) to avoid any risk of exposing the secret and to keep the assignment focused; the brief did not require CI/CD.
-
+I **removed the Playwright GitHub Actions workflow** (`playwright.yml`) to avoid any risk of exposing the secret and to keep the assignment focused.
 ---
 
 ## Playwright config notes
