@@ -1,7 +1,7 @@
 # fndsmoke Playwright and TypeScript code examples
 
 ## Important note
-This was an assignment for a job interview. If you clone it, possibly all of the tests will fail, as you need a custom user agent. However, you can use the code and you can look at it to have an example of my work.
+This was a temporary test assignment. If you clone it, possibly all of the tests will fail, as you need a custom user agent. That user agent has expired and will no longer work, the tests will stop when facing the "I am not a robot" check. However, you can use the code, and you can look at it to have an example of my work.
 
 
 ---
